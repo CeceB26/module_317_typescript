@@ -93,7 +93,50 @@ class NCycle<T> {
   stop(): void {
     this.status = "stopped";
   }
+printAll(): void {
+  const makeIsArray = Array.isArray(this.make);
+  const modelIsArray = Array.isArray(this.model);
+
+  // Case 1: make + model are NOT arrays
+  if (!makeIsArray && !modelIsArray) {
+    console.log(`This is a ${String(this.make)} ${String(this.model)} NCycle.`);
+    return;
+  }
+
+  // Case 2: make + model ARE arrays -> print all matching index pairs
+ const make = this.make;
+const model = this.model;
+
+if (Array.isArray(make) && Array.isArray(model)) 
+    {
+    const maxLen = Math.min(make.length, model.length);
+  // use make[i], model[i] inside
+
+ // If there are no pairs to print, treat as improperly created
+    if (maxLen === 0) {
+      console.log("This NCycle was not created properly.");
+      return;
+    }
 }
+
+    for (let i = 0; i < maxLen; i++) {
+      const makeAt = this.make;
+      const modelAt = this.model;
+
+      // “matching pairs” means both exist at the same index
+      if (makeAt !== undefined && modelAt !== undefined) {
+        console.log(`This NCycle has a ${String(makeAt)} ${String(modelAt)} at ${i}.`);
+      }
+
+    return;
+  }
+
+
+  // Case 3: mismatched types (one array, one not) -> improperly created
+  console.log("This NCycle was not created properly.");
+}
+}
+
 const n1 = new NCycle<string>("Honda", "CBR", 2);
 n1.print(); // This is a Honda CBR NCycle.
 
